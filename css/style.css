@@ -1,0 +1,106 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+
+@font-face{
+    font-family: 'Josefin Sans', sans-serif;
+    src:url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+}
+
+
+
+
+.brandTop{
+    background-color: white;
+}
+.logoIcon{
+    display: inline !important;
+    padding: 0;
+    margin: 0;
+}
+.logoText{
+    display: inline-block !important;
+    padding: 0;
+    margin: 0;
+}
+.logo{    
+    font: normal 700 64px/66px 'Josefin Sans';
+    text-shadow: 4px 4px 4px #aaa;
+    padding: 15px 5px;
+    letter-spacing: 3px;
+}
+.logo a{
+    text-decoration: none;
+    color: black;
+}
+.buttonsGroup{
+    margin-top: 23px;
+    margin-right: 20px;
+}
+.quoteArea{
+    background-color: grey;
+    color: black;
+    font: normal 500 34px/36px 'Josefin Sans';
+    padding: 10px 30px;
+}
+#quote{
+    width: 50%;
+    margin: auto;
+}
+#author{
+    font-style: italic;
+}
+.centralArea{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    color: black;
+    opacity: 0.95;
+}
+.fullColorBackground{
+    
+    background-color: whitesmoke;
+    padding: 30px;
+    opacity: 0.9;
+    border-radius: 15px;
+}
+.budgetPros{
+    font: normal 300 22px/36px 'Josefin Sans';
+}
+.budgetPros ul{
+    list-style: none;
+}
+.budgetPros span{
+    color: cornflowerblue;
+    font-weight: bold;
+}
+.prosHeader{
+    text-align: center !important;
+}
+.budgetPros .prosIcon{
+    margin-right: 15px;
+    color: cornflowerblue;
+}
+.decideArea{
+    margin-top: 5rem;
+}
+.fullColorBackground .decideTile h3{
+    min-height: 120px;
+}
+.imageBackground{
+    background-image: url(../img/decideBackground-min.jpg);
+    
+    background-position: center center;
+    
+    background-repeat: no-repeat;
+    
+    background-attachment: fixed;
+    
+    background-size: cover;
+    
+    background-color:#464646;
+    
+}
+.decideTile{
+    text-align: center;
+}

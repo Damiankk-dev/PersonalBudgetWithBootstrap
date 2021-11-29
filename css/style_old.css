@@ -1,0 +1,96 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+
+@font-face{
+    font-family: 'Josefin Sans', sans-serif;
+    src:url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+}
+
+#brandTop{
+    background-color: lightgray;
+}
+#logo{
+    font: normal 500 64px/66px 'Josefin Sans';
+    text-align: center;
+    text-shadow: 4px 4px 4px #aaa;
+    padding: 30px 10px;
+    float: left;
+}
+#logoText{
+    font: normal 900 32px/32px 'Josefin Sans';
+    letter-spacing: 3px;
+    text-align: center;
+    float: left;
+    margin-right: auto;
+}
+.topBarButtons{
+    padding: 15px 10px;
+}
+#brandTop #quote {
+    text-align: center;
+    font-size: 38px;
+    font-family: 'Josefin Sans';
+    font-weight: 100;
+}
+#brandTop #quote{
+    padding: .5rem 5rem;
+    background-color: lightgray;
+}
+#brandTop #quote p{
+    font-style: normal;
+}
+#brandTop #quote #author{
+    margin-right: 10rem;
+    font-style: italic;
+    text-align: right;
+    font-size: 25px;
+}
+#info{
+    text-align: center;
+    margin: auto;
+    padding-top: 30px;
+    list-style-position: inside;
+}
+.decideArea{
+    text-align: center;
+}
+.decideTile h3{
+    min-height: 3.5rem;
+}
+.bgImage{
+    /* Location of the image */
+    background-image: url(../img/decideBackground.jpg);
+    
+    /* Image is centered vertically and horizontally at all times */
+    background-position: center center;
+    
+    /* Image doesn't repeat */
+    background-repeat: no-repeat;
+    
+    /* Makes the image fixed in the viewport so that it doesn't move when 
+       the content height is greater than the image height */
+    background-attachment: fixed;
+    
+    /* This is what makes the background image rescale based on its container's size */
+    background-size: cover;
+    
+    /* Pick a solid background color that will be displayed while the background image is loading */
+    background-color:#464646;
+    
+    /* SHORTHAND CSS NOTATION
+     * background: url(background-photo.jpg) center center cover no-repeat fixed;
+     */
+
+}
+
+#headerek{
+    min-height: 300px;
+
+}
+.shadedFrame{
+    background-color: whitesmoke;
+    opacity: 0.9;
+}
+#decideArea{
+    opacity: 0.9;
+}
