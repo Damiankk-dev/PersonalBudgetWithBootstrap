@@ -104,3 +104,6 @@
 .decideTile{
     text-align: center;
 }
+.prosHeader .input-group{
+    margin-top: 10px;
+}
