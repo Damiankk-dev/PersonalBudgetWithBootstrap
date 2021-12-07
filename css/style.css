@@ -8,14 +8,20 @@
 
 
 
-
+.navbar{
+    background-color: whitesmoke !important;
+}
 .brandTop{
-    background-color: white;
+    background-color: whitesmoke;
+    justify-content: space-between;
+    align-items: center;
 }
 .logoIcon{
-    display: inline !important;
+    display: inline-block !important;
     padding: 0;
     margin: 0;
+    width: 64px !important;
+    height: 64px;
 }
 .logoText{
     display: inline-block !important;
@@ -32,8 +38,10 @@
     text-decoration: none;
     color: black;
 }
+.navbar .nav-item{
+    font: normal 500 24px/26px 'Josefin Sans';
+}
 .buttonsGroup{
-    margin-top: 23px;
     margin-right: 20px;
 }
 .quoteArea{
@@ -41,13 +49,16 @@
     color: black;
     font: normal 500 34px/36px 'Josefin Sans';
     padding: 10px 30px;
+    position: relative;
+    border-radius: 15px;
 }
 #quote{
-    width: 50%;
+    width: 75%;
     margin: auto;
 }
 #author{
     font-style: italic;
+    text-align: right;
 }
 .centralArea{
     width: 80%;

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+    
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/fontello.css" type="text/css">
+
+</head>
+<body>
+    <div class="d-flex flex-column vh-100 overflow-hidden p-0">
+        <header>
+                <div class="brandTop d-flex flex-row">
+                    <div class="logo d-block">
+                        <a href="#">
+                            <div class="logoIcon"><i class="icon-chart-bar"> </i></div>
+                            <div class="logoText">
+                                <div class="textPart d-inline">Personal</div>
+                                <div class="textPart d-inline">Budget</div>
+                            </div> 
+                        </a>                       
+                    </div>
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>                      
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                          <ul class="navbar-nav mt-2 mt-lg-0">
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Dodaj przychód</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Dodaj wydatek</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Przeglądaj bilans</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Ustawienia</a>
+                            </li>
+                          </ul>
+                        </div>          
+                    </nav>
+                    <div class="topBarButtons">
+                        <div class="buttonsGroup">
+                            <button type="button" class="btn btn-outline-warning signOut d-block d-sm-inline float-right">Wyloguj</button>
+                        </div>
+                    </div>  
+                </div>
+        </header>
+        <div class="col-12 mh-100 overflow-auto py-2 imageBackground">
+            <main>
+                <div class="centralArea">
+                    <div class="row">
+                        <div class="col-10 offset-1 quoteArea">
+                            <div id="quote">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Commodi molestiae nobis omnis.</p>
+                                <div id="author">Autor Cytatu</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="./js/jquery.3.4.1.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+</body>
+</html>
