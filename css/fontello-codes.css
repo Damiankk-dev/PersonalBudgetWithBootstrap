@@ -1,8 +1,19 @@
 
-.icon-at:before { content: '\e800'; } /* '' */
-.icon-lock:before { content: '\e801'; } /* '' */
+.icon-chart-bar:before { content: '\e800'; } /* '' */
+.icon-list-alt:before { content: '\e801'; } /* '' */
 .icon-flight:before { content: '\e802'; } /* '' */
-.icon-chart-bar:before { content: '\e803'; } /* '' */
-.icon-docs:before { content: '\f0c5'; } /* '' */
+.icon-params:before { content: '\e803'; } /* '' */
+.icon-th:before { content: '\e804'; } /* '' */
+.icon-credit-card:before { content: '\e805'; } /* '' */
+.icon-calendar:before { content: '\e806'; } /* '' */
+.icon-up-open:before { content: '\e807'; } /* '' */
+.icon-down-open:before { content: '\e808'; } /* '' */
 .icon-money:before { content: '\f0d6'; } /* '' */
+.icon-plus-squared:before { content: '\f0fe'; } /* '' */
 .icon-gamepad:before { content: '\f11b'; } /* '' */
+.icon-minus-squared:before { content: '\f146'; } /* '' */
+.icon-euro:before { content: '\f153'; } /* '' */
+.icon-dollar:before { content: '\f155'; } /* '' */
+.icon-bitcoin:before { content: '\f15a'; } /* '' */
+.icon-sliders:before { content: '\f1de'; } /* '' */
+.icon-search:before { content: '\f50d'; } /* '' */
