@@ -1,4 +1,7 @@
-function alertoo(){
-    alert("message");
-}
-$(document).ready(alerto());
+$(function() {
+    $( "#datepicker-13" ).datepicker();
+ });
+ $(document).ready(function(){
+    $("#datepicker-13").datepicker().datepicker('setDate', new Date());
+ });
+ 
