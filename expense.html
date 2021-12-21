@@ -28,72 +28,75 @@
                       <a href="#">
                           <div class="logoIcon"><i class="icon-chart-bar"> </i></div>
                           <div class="logoText">
-                              <div class="textPart d-inline">Personal</div>
-                              <div class="textPart d-inline">Budget</div>
+                              <div class="textPart d-xl-inline d-block">Personal</div>
+                              <div class="textPart d-xl-inline d-block">Budget</div>
                           </div> 
                       </a>                       
                   </div>
+                  <div class="navigationArea">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>                      
-                      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                        <ul class="navbar-nav mt-2 mt-lg-0">
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Dodaj przychód</a>
-                          </li>
-                          <li class="nav-item active">
-                            <a class="nav-link " href="#">Dodaj wydatek</a>
-                          </li>
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Przeglądaj bilans
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="#">Bieżący miesiąc</a>
-                              <a class="dropdown-item" href="#">Poprzedni miesiąc</a>
-                              <a class="dropdown-item" href="#">Bieżący rok</a>
-                              <a class="dropdown-item" href="#">Dowolny okres</a>
-                            </div>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Ustawienia</a>
-                          </li>
-                        </ul>
-                      </div>     
-                  </nav>
-                  <div class="topBarButtons">
-                      <div class="buttonsGroup">
-                          <button type="button" class="btn btn-outline-warning signOut d-block d-sm-inline float-right">Wyloguj</button>
-                      </div>
-                  </div>  
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>                      
+                        <div class="collapse navbar-collapse navi" id="navbarTogglerDemo03">
+                          <ul class="navbar-nav mt-2 mt-lg-0">
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Przychód</a>
+                            </li>
+                            <li class="nav-item active">
+                              <a class="nav-link " href="#">Wydatek</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Bilans
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Bieżący miesiąc</a>
+                                <a class="dropdown-item" href="#">Poprzedni miesiąc</a>
+                                <a class="dropdown-item" href="#">Bieżący rok</a>
+                                <a class="dropdown-item" href="#">Dowolny okres</a>
+                              </div>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Ustawienia</a>
+                            </li>
+                            <li class="nav-item signOutItem">
+                              <a class="nav-link" href="#">Wyloguj</a>
+                            </li>
+                            <li class="nav-item signOut">
+                              <button type="button" class="btn btn-outline-warning">Wyloguj</button>
+                            </li>
+                          </ul>
+                        </div>     
+                    </nav>
+                  </div> 
               </div>
       </header>
         <div class="col-12 mh-100 overflow-auto py-2 imageBackground">
             <main>
                 <div class="centralArea">
                     <div class="row">
-                        <div class="col-6 offset-3 fullColorBackground">
+                        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 fullColorBackground">
                             <div class="d-block prosHeader">
                                 <h1>Dodaj wydatek</h1>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 offset-3 fullColorBackground my-4">
-                            <div class="input-group inputControl">
+                        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 fullColorBackground my-4">
+                            <div class="input-group inputControl w-100">
                                 <div class="input-group-prepend w-25">
                                     <div class="input-group-text w-100 justify-content-center"><i class="icon-money"></i></div>
                                 </div>
                                 <input type="text" class="form-control " placeholder="Kwota">
                             </div>
-                            <div class="input-group inputControl">
+                            <div class="input-group inputControl w-100">
                                 <div class="input-group-prepend w-25">
-                                  <label class="input-group-text w-100 justify-content-center">Data<i class="icon-calendar"></i></label>
+                                  <label class="input-group-text w-100 justify-content-center"><span class="datePrependLabel">Data</span> <i class="icon-calendar"></i></label>
                                 </div>
                                 <input type = "text" id = "datepicker-13" class="form-control">
                             </div>  
-                            <div class="input-group mb-3 inputControl">
+                            <div class="input-group mb-3 inputControl w-100">
                                 <div class="input-group-prepend w-25">
                                   <div class="input-group-text justify-content-center w-100">
                                     <i class="icon-money"></i>
@@ -109,7 +112,7 @@
                                   <option value="4">Przelew</option>
                                 </select>
                             </div>
-                            <div class="input-group mb-3 inputControl">
+                            <div class="input-group mb-3 inputControl w-100">
                                 <div class="input-group-prepend w-25">
                                   <div class="input-group-text w-100 justify-content-center"><i class="icon-th"></i></div>
                                 </div>
