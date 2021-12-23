@@ -80,9 +80,10 @@
 .fullColorBackground{
     
     background-color: whitesmoke;
-    padding: 30px;
+    padding: 0.5rem;
     opacity: 0.9;
     border-radius: 15px;
+    margin-top: 1rem;
 }
 .budgetPros{
     font: normal 300 22px/36px 'Josefin Sans';
@@ -105,7 +106,7 @@
     margin-top: 5rem;
 }
 .fullColorBackground .decideTile h3{
-    min-height: 120px;
+    min-height: 5rem;
 }
 .imageBackground{
     background-image: url(../img/decideBackground-min.jpg);
@@ -123,6 +124,7 @@
 }
 .decideTile{
     text-align: center;
+    height: 10rem;
 }
 .prosHeader .input-group{
     margin-top: 10px;
@@ -143,7 +145,24 @@
     .datePrependLabel{
         display: none !important;
     }
-    
+    .fullColorBackground .budgetPros{
+        font: normal 500 10px/16px 'Josefin Sans';
+    }
+    .fullColorBackground .prosHeader h1{
+        font: normal 500 18px/20px 'Josefin Sans';
+    }
+    .fullColorBackground h3{
+        font: normal 500 18px/20px 'Josefin Sans';
+    }
+    .decideArea{
+        margin-top: 1rem;
+    }
+    .fullColorBackground .decideTile h3{
+        min-height: 2rem;
+    }
+    .decideTile{
+        height: 5rem;
+    }
 }
 
 /* // Medium devices (tablets, less than 992px) */

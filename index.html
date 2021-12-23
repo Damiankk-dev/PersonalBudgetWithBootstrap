@@ -19,33 +19,65 @@
 <body>
     <div class="d-flex flex-column vh-100 overflow-hidden container-fluid p-0">
         <header>
-            <div class="brandTop d-flex flex-row">
-                <div class="logo d-block">
-                    <a href="#">
-                        <div class="logoIcon"><i class="icon-chart-bar"> </i></div>
-                        <div class="logoText">
-                            <div class="textPart d-inline">Personal</div>
-                            <div class="textPart d-inline">Budget</div>
-                        </div> 
-                    </a>                       
-                </div>
-                <div class="topBarButtons">
-                    <div class="buttonsGroup">
-                        <button type="button" class="btn btn-outline-secondary signUp d-block d-sm-inline">Rejestracja</button>
-                        <button type="button" class="btn btn-outline-primary signIn my-2 d-block d-sm-inline">Logowanie</button>
+                <div class="brandTop d-flex flex-row">
+                    <div class="logo d-block">
+                        <a href="#">
+                            <div class="logoIcon"><i class="icon-chart-bar"> </i></div>
+                            <div class="logoText">
+                                <div class="textPart d-xl-inline d-block">Personal</div>
+                                <div class="textPart d-xl-inline d-block">Budget</div>
+                            </div> 
+                        </a>                       
                     </div>
+                    <div class="navigationArea">
+                      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>                      
+                          <div class="collapse navbar-collapse navi" id="navbarTogglerDemo03">
+                            <ul class="navbar-nav mt-2 mt-lg-0">
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">Przychód</a>
+                              </li>
+                              <li class="nav-item active">
+                                <a class="nav-link " href="#">Wydatek</a>
+                              </li>
+                              <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Bilans
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="#">Bieżący miesiąc</a>
+                                  <a class="dropdown-item" href="#">Poprzedni miesiąc</a>
+                                  <a class="dropdown-item" href="#">Bieżący rok</a>
+                                  <a class="dropdown-item" href="#">Dowolny okres</a>
+                                </div>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">Ustawienia</a>
+                              </li>
+                              <li class="nav-item signOutItem">
+                                <a class="nav-link" href="#">Wyloguj</a>
+                              </li>
+                              <li class="nav-item signOut">
+                                <button type="button" class="btn btn-outline-warning">Wyloguj</button>
+                              </li>
+                            </ul>
+                          </div>     
+                      </nav>
+                    </div> 
                 </div>
-            </div>
         </header>
         <div class="col-12 mh-100 overflow-auto py-2 imageBackground">
             <main>
                 <div class="centralArea">
                     <div class="row">
-                        <div class="col-6 offset-3 fullColorBackground">
+                        <!-- col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3  -->
+                        <div class="col-12 col-xl-8 offset-xl-2 fullColorBackground">
                             <div class="d-block prosHeader">
                                 <h1>Korzyści z prowadzenia budżetu</h1>
                             </div>
-                            <div class="d-block budgetPros">                    
+                            <div class="d-block budgetPros w-100">                    
                                 <ul>
                                     <li><i class="icon-gamepad prosIcon"></i>Lepsza <span>kontrola</span> własnych wydatków</li>
                                     <li><i class="icon-money prosIcon"></i>Efektywne gromadzenie <span>oszczędności</span></li>
@@ -55,15 +87,15 @@
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-8 offset-2">
+                        <div class="col-12 col-xl-8 offset-xl-2 my-2">
                             <div class="row decideArea">
-                                <div class="col-3 offset-2 fullColorBackground">
-                                    <div id="registerArea" class="d-block decideTile">
+                                <div class="col-12 col-sm-4 offset-sm-1 fullColorBackground">
+                                    <div id="registerArea" class="d-block decideTile my-1">
                                         <h3>Już teraz załóż konto:</h3>
                                         <button type="button" class="btn btn-outline-secondary signUp">Rejestracja</button>
                                     </div>
                                 </div>
-                                <div class="col-3 offset-2 fullColorBackground">
+                                <div class="col-12 col-sm-4 offset-sm-2 fullColorBackground">
                                     <div id="loginArea" class="d-block decideTile">
                                         <h3 class="d-block">Posiadasz konto:</h3>
                                         <button type="button" class="btn btn-outline-primary signIn">Logowanie</button>
