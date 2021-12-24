@@ -23,54 +23,68 @@
 <body>
     <div class="d-flex flex-column vh-100 overflow-hidden p-0">
       <header>
-              <div class="brandTop d-flex flex-row">
-                  <div class="logo d-block">
-                      <a href="#">
-                          <div class="logoIcon"><i class="icon-chart-bar"> </i></div>
-                          <div class="logoText">
-                              <div class="textPart d-xl-inline d-block">Personal</div>
-                              <div class="textPart d-xl-inline d-block">Budget</div>
-                          </div> 
-                      </a>                       
-                  </div>
-                  <div class="navigationArea">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="navbar-toggler-icon"></span>
-                        </button>                      
-                        <div class="collapse navbar-collapse navi" id="navbarTogglerDemo03">
-                          <ul class="navbar-nav mt-2 mt-lg-0">
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">Przychód</a>
-                            </li>
-                            <li class="nav-item active">
-                              <a class="nav-link " href="#">Wydatek</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Bilans
+          <div class="brandTop d-flex flex-row">
+              <div class="logo d-block">
+                  <a href="#">
+                      <div class="logoIcon"><i class="icon-chart-bar"> </i></div>
+                      <div class="logoText">
+                          <div class="textPart d-xl-inline d-block">Personal</div>
+                          <div class="textPart d-xl-inline d-block">Budget</div>
+                      </div> 
+                  </a>                       
+              </div>
+              <div class="navigationArea">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                      </button>                      
+                      <div class="collapse navbar-collapse navi" id="navbarTogglerDemo03">
+                      <ul class="navbar-nav mt-2 mt-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">
+                              <div class="d-flex iconMenuItem">
+                                <i class="icon-down-open"></i>Dodaj <span>Przychód</span>
+                              </div>
+                            </a>
+                          </li>
+                          <li class="nav-item active">
+                            <a class="nav-link " href="#">
+                              <div class="d-flex iconMenuItem">
+                                <i class="icon-up-open"></i>Dodaj <span>Wydatek</span>
+                              </div>
+                            </a>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <div class="d-flex iconMenuItem">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                  
+                                <span class="icon-list-alt"></span><span class="blankLine">Przeglądaj</span><span class="blankLine">Bilans</span> 
                               </a>
                               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Bieżący miesiąc</a>
-                                <a class="dropdown-item" href="#">Poprzedni miesiąc</a>
-                                <a class="dropdown-item" href="#">Bieżący rok</a>
-                                <a class="dropdown-item" href="#">Dowolny okres</a>
+                                  <a class="dropdown-item" href="#">Bieżący miesiąc</a>
+                                  <a class="dropdown-item" href="#">Poprzedni miesiąc</a>
+                                  <a class="dropdown-item" href="#">Bieżący rok</a>
+                                  <a class="dropdown-item" href="#">Dowolny okres</a>
                               </div>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">Ustawienia</a>
-                            </li>
-                            <li class="nav-item signOutItem">
-                              <a class="nav-link" href="#">Wyloguj</a>
-                            </li>
-                            <li class="nav-item signOut">
-                              <button type="button" class="btn btn-outline-warning">Wyloguj</button>
-                            </li>
-                          </ul>
-                        </div>     
-                    </nav>
-                  </div> 
-              </div>
+                            </div>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">
+                              <div class="d-flex iconMenuItem">
+                                <i class="icon-sliders"></i>Ustawienia
+                              </div>
+                            </a>
+                          </li>
+                          <li class="nav-item signOutItem">
+                          <a class="nav-link" href="#">Wyloguj</a>
+                          </li>
+                          <li class="nav-item signOut">
+                          <button type="button" class="btn btn-outline-warning"><i class="icon-off"></i> Wyloguj</button>
+                          </li>
+                      </ul>
+                      </div>     
+                  </nav>
+              </div> 
+          </div>  
       </header>
         <div class="col-12 mh-100 overflow-auto py-2 imageBackground">
             <main>

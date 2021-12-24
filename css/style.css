@@ -17,6 +17,16 @@
 .navbar{
     background-color: whitesmoke !important;
 }
+.navbar-nav{
+    align-items: center;
+}
+.dropdown-toggle .blankLine:before{
+    content: "\A";
+    white-space: pre;
+}
+.dropdown-toggle{
+    text-align: center;
+}
 .brandTop{
     background-color: whitesmoke;
     justify-content: space-between;
@@ -129,6 +139,13 @@
 }
 .prosHeader .input-group{
     margin-top: 10px;
+}
+.iconMenuItem{
+    align-items: center;
+    flex-direction: column;
+}
+.dropdown-item:hover{
+    background-color: rgb(235, 235, 235);
 }
 
 /* //Extra small devices (portrait phones, less than 576px) */
