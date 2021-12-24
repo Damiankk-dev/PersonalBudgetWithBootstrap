@@ -151,6 +151,7 @@
     }
     .fullColorBackground .prosHeader h1{
         font: normal 500 18px/20px 'Josefin Sans';
+        margin-bottom: 0;
     }
     .fullColorBackground h3{
         font: normal 500 18px/20px 'Josefin Sans';
@@ -179,6 +180,10 @@
         width: 50px !important;
         height: 50px;
     }
+    h1{
+        font: normal 500 20px/22px 'Josefin Sans';
+        margin-top: 0.5rem;
+    }
 }
 
 /* // Large devices (desktops, less than 1200px) */
@@ -190,6 +195,10 @@
         font: normal 700 46px/48px 'Josefin Sans';
         width: 48px !important;
         height: 48px;
+    }
+    h1{
+        font: normal 500 28px/30px 'Josefin Sans';
+        margin-top: 0.5rem;
     }
 }
 
