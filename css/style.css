@@ -147,6 +147,9 @@
 .dropdown-item:hover{
     background-color: rgb(235, 235, 235);
 }
+.modal-body .d-flex{
+    align-items: center;
+}
 
 /* //Extra small devices (portrait phones, less than 576px) */
 /* @media (max-width: 575.98px) { ... } */
