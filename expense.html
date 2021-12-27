@@ -97,12 +97,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 fullColorBackground my-4">
+                        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 fullColorBackground my-4 px-4 pb-3">
+                          <form>
                             <div class="input-group inputControl w-100">
                                 <div class="input-group-prepend w-25">
                                     <div class="input-group-text w-100 justify-content-center"><i class="icon-money"></i></div>
                                 </div>
-                                <input type="text" class="form-control " placeholder="Kwota">
+                                <input type="number" class="form-control " min="0" placeholder="Kwota">
                             </div>
                             <div class="input-group inputControl w-100">
                                 <div class="input-group-prepend w-25">
@@ -151,6 +152,10 @@
                                   <option value="17">Inne</option>
                                 </select>
                             </div>
+                            <div class="buttonArea d-flex">
+                              <button type="submit" class="btn btn-outline-primary w-50 mx-auto"><i class="icon-up-open"></i>Dodaj</button>
+                            </div>    
+                          </form>
                         </div>
                     </div>
                 </div>
