@@ -30,9 +30,13 @@
                     </a>                       
                 </div>
                 <div class="topBarButtons">
-                    <div class="buttonsGroup">
-                        <button type="button" class="btn btn-outline-secondary signUp d-block d-sm-inline">Rejestracja</button>
-                        <button type="button" class="btn btn-outline-primary signIn my-2 d-block d-sm-inline">Logowanie</button>
+                    <div class="buttonsGroup">			
+						<a href="signUp.php">
+							<button type="button" class="btn btn-outline-secondary signUp d-block d-sm-inline">Rejestracja</button>
+						</a>						
+						<a href="signIn.php">
+							<button type="button" class="btn btn-outline-primary signIn my-2 d-block d-sm-inline">Logowanie</button>
+						</a>
                     </div>
                 </div>
             </div>
@@ -65,8 +69,9 @@
                         <div class="col-md-6 offset-md-3 fullColorBackground my-5">
                             <div class="d-block prosHeader">
                                 <h1>Nie masz jeszcze konta?</h1>
-                                <button type="button" class="btn btn-outline-secondary signIn my-4 w-50">Zarejestruj się!</button>
-
+								<a href="signUp.php">
+									<button type="button" class="btn btn-outline-secondary signIn my-4 w-50">Zarejestruj się!</button>
+								</a>
                             </div>
                         </div>
                     </div>

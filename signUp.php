@@ -1,3 +1,13 @@
+<?php
+	session_start();
+	if ( isset($_POST['email'])){		
+		
+		
+		
+	}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,9 +40,13 @@
                     </a>                       
                 </div>
                 <div class="topBarButtons">
-                    <div class="buttonsGroup">
-                        <button type="button" class="btn btn-outline-secondary signUp d-block d-sm-inline">Rejestracja</button>
-                        <button type="button" class="btn btn-outline-primary signIn my-2 d-block d-sm-inline">Logowanie</button>
+                    <div class="buttonsGroup">					
+						<a href="signUp.php">
+							<button type="button" class="btn btn-outline-secondary signUp d-block d-sm-inline">Rejestracja</button>
+						</a>						
+						<a href="signIn.php">
+							<button type="button" class="btn btn-outline-primary signIn my-2 d-block d-sm-inline">Logowanie</button>
+						</a>
                     </div>
                 </div>
             </div>
@@ -43,28 +57,30 @@
                     <div class="row">
                         <div class="col-md-6 offset-md-3 fullColorBackground">
                             <div class="d-block prosHeader">
-                                <h1><i class="icon-gamepad prosIcon"></i>Rejestracja</h1>
-                                <div class="input-group w-75 mx-auto">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="icon-at"></i></div>
-                                    </div>
-                                    <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Podaj email">
-                                </div>
-                                <div class="input-group w-75 mx-auto">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="icon-lock"></i></div>
-                                    </div>
-                                    <label for="exampleInputPassword1"></label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
-                                </div>   
-                                <div class="input-group w-75 mx-auto">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="icon-docs"></i></div>
-                                    </div>
-                                    <label for="exampleInputPassword2"></label>
-                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Powtórz hasło">
-                                </div>                         
-                                <button type="button" class="btn btn-outline-secondary signIn my-4 w-50">Zarejestruj się!</button>                                                      
+								<form method="post">
+									<h1><i class="icon-gamepad prosIcon"></i>Rejestracja</h1>
+									<div class="input-group w-75 mx-auto">
+										<div class="input-group-prepend">
+											<div class="input-group-text"><i class="icon-at"></i></div>
+										</div>
+										<input name="email" type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Podaj email">
+									</div>
+									<div class="input-group w-75 mx-auto">
+										<div class="input-group-prepend">
+											<div class="input-group-text"><i class="icon-lock"></i></div>
+										</div>
+										<label for="exampleInputPassword1"></label>
+										<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
+									</div>   
+									<div class="input-group w-75 mx-auto">
+										<div class="input-group-prepend">
+											<div class="input-group-text"><i class="icon-docs"></i></div>
+										</div>
+										<label for="exampleInputPassword2"></label>
+										<input type="password" class="form-control" id="exampleInputPassword2" placeholder="Powtórz hasło">
+									</div>                         
+									<button type="submit" class="btn btn-outline-secondary signIn my-4 w-50">Zarejestruj się!</button>    
+								</form>
                             </div>
                         </div>
                     </div>
@@ -72,7 +88,9 @@
                         <div class="col-md-6 offset-md-3 fullColorBackground my-5">
                             <div class="d-block prosHeader">
                                 <h1>Posiadasz już konto?</h1>
-                                <button type="button" class="btn btn-outline-primary signIn my-4 w-50">Zaloguj się!</button>
+								<a href="signIn.php">
+									<button type="button" class="btn btn-outline-primary signIn my-4 w-50">Zaloguj się!</button>
+								</a>
                             </div>
                         </div>
                     </div>
