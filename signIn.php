@@ -1,5 +1,11 @@
 <?php
 	session_start();
+	//dodanie odpowiedniego formularza
+	//porownanie maila z baza danych
+	//porownanie hasla z tym przypisanym do hasla
+	//owarunkowanie zachiwania formularza
+	//niepoprawne haslo
+	//niepoprawny email
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +31,7 @@
         <header>
             <div class="brandTop d-flex flex-row">
                 <div class="logo d-block">
-                    <a href="#">
+                    <a href="index.php">
                         <div class="logoIcon"><i class="icon-chart-bar"> </i></div>
                         <div class="logoText">
                             <div class="textPart d-xl-inline d-block">Personal</div>
@@ -51,21 +57,23 @@
                     <div class="row">
                         <div class="col-md-6 offset-md-3 fullColorBackground">
                             <div class="d-block prosHeader">
+								<form action="login.php" method="post"
                                 <h1><i class="icon-flight prosIcon"></i>Logowanie</h1>
                                 <div class="input-group w-75 mx-auto">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="icon-at"></i></div>
                                     </div>
-                                    <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Podaj email">
+                                    <input name="email" type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Podaj email"
+									/>
                                 </div>
                                 <div class="input-group w-75 mx-auto">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="icon-lock"></i></div>
                                     </div>
                                     <label for="exampleInputPassword1"></label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
+                                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
                                 </div>                         
-                                <button type="button" class="btn btn-outline-primary signIn my-4 w-50">Zaloguj się!</button>
+                                <button type="submit" class="btn btn-outline-primary signIn my-4 w-50">Zaloguj się!</button>
                             </div>  
                         </div>
                     </div>

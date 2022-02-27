@@ -150,7 +150,7 @@
         <header>
             <div class="brandTop d-flex flex-row">
                 <div class="logo d-block">
-                    <a href="#">
+                    <a href="index.php">
                         <div class="logoIcon"><i class="icon-chart-bar"> </i></div>
                         <div class="logoText">
                             <div class="textPart d-xl-inline d-block">Personal</div>

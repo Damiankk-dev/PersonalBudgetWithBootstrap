@@ -1,3 +1,10 @@
+<?php
+
+	session_start();
+	
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +28,7 @@
         <header>
           <div class="brandTop d-flex flex-row">
               <div class="logo d-block">
-                  <a href="#">
+                  <a href="index.php">
                       <div class="logoIcon"><i class="icon-chart-bar"> </i></div>
                       <div class="logoText">
                           <div class="textPart d-xl-inline d-block">Personal</div>
@@ -30,10 +37,14 @@
                   </a>                       
               </div>
               <div class="topBarButtons">
-                  <div class="buttonsGroup">
-                      <button type="button" class="btn btn-outline-secondary signUp d-block d-sm-inline">Rejestracja</button>
-                      <button type="button" class="btn btn-outline-primary signIn my-2 d-block d-sm-inline">Logowanie</button>
-                  </div>
+                    <div class="buttonsGroup">			
+						<a href="signUp.php">
+							<button type="button" class="btn btn-outline-secondary signUp d-block d-sm-inline">Rejestracja</button>
+						</a>						
+						<a href="signIn.php">
+							<button type="button" class="btn btn-outline-primary signIn my-2 d-block d-sm-inline">Logowanie</button>
+						</a>
+                    </div>
               </div>
           </div>
         </header>
@@ -61,13 +72,17 @@
                                 <div class="col-12 col-sm-4 offset-sm-1 fullColorBackground">
                                     <div id="registerArea" class="d-block decideTile my-1">
                                         <h3>Już teraz załóż konto:</h3>
+										<a href="signUp.php">
                                         <button type="button" class="btn btn-outline-secondary signUp">Rejestracja</button>
+										</a>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4 offset-sm-2 fullColorBackground">
                                     <div id="loginArea" class="d-block decideTile">
                                         <h3 class="d-block">Posiadasz konto:</h3>
+										<a href="signIn.php">
                                         <button type="button" class="btn btn-outline-primary signIn">Logowanie</button>
+										</a>
                                     </div>
                                 </div>    
                             </div>
