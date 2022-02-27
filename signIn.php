@@ -71,7 +71,7 @@
                                         <div class="input-group-text"><i class="icon-lock"></i></div>
                                     </div>
                                     <label for="exampleInputPassword1"></label>
-                                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
+                                    <input name="password" type="password" class="form-control" id="exampleInputPassword" placeholder="Hasło">
                                 </div>                         
                                 <button type="submit" class="btn btn-outline-primary signIn my-4 w-50">Zaloguj się!</button>
                             </div>  

@@ -55,7 +55,14 @@
                         <!-- col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3  -->
                         <div class="col-12 col-xl-8 offset-xl-2 fullColorBackground">
                             <div class="d-block prosHeader">
-                                <h1>Korzyści z prowadzenia budżetu</h1>
+                                <h1>
+									<?php
+
+									if(isset($_SESSION['error'])) echo $_SESSION['error'];
+
+									?>
+									Korzyści z prowadzenia budżetu
+								</h1>
                             </div>
                             <div class="d-block budgetPros w-100">                    
                                 <ul>
