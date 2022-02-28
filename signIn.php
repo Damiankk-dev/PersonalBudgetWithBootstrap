@@ -57,7 +57,11 @@
                     <div class="row">
                         <div class="col-md-6 offset-md-3 fullColorBackground">
                             <div class="d-block prosHeader">
-								<form action="login.php" method="post"
+								<form action="login.php" method="post">
+								<?php
+									if (isset($_SESSION['signUpMessage'])){echo $_SESSION['signUpMessage'];}
+									unset($_SESSION['signUpMessage']);
+								?>
                                 <h1><i class="icon-flight prosIcon"></i>Logowanie</h1>
                                 <div class="input-group w-75 mx-auto">
                                     <div class="input-group-prepend">

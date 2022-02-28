@@ -6,7 +6,7 @@
 		
 		$username = $_POST['username'];
 		//sprawdzenie długosci nicka
-		if ((strlen($username)<2) || (strlen($username)>20)){
+		if ((strlen($username) < 3) || (strlen($username)>20)){
 			$isValidationProper=false;
 			$_SESSION['e_username']="Podaj realne imię, bez polskich znaków";
 		}
@@ -72,6 +72,7 @@
 		
 		//captcha
 		//zapamietanie wprowadzonych danych
+		$_SESSION['m_username'] = $username;
 		$_SESSION['m_email'] = $email;
 		$_SESSION['m_password1'] = $password1;
 		$_SESSION['m_password2'] = $password2;
@@ -103,6 +104,7 @@
 					if ($db_connection->query("INSERT INTO users VALUES(NULL, '$username', '$password_hash', '$email')"))
 					{
 						$_SESSION['signUpCompleted'] = true;
+						$_SESSION['signUpMessage'] = "<h3>Gratulacje, udało Ci się zrobić pierwszy krok do zadbania o finanse!</h3>";
 						header('Location: signIn.php');
 					}
 					else 

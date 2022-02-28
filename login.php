@@ -66,13 +66,13 @@
 					}
 					else{
 						echo '</br><span style="color:red;">Nie ma usera</span>';
-						$_SESSION['error'] = '<span style="color:red;">Nieprawidłowy email lub hasło</span>';
+						$_SESSION['error'] = '<span style="color:red;">Nieprawidłowy email lub hasło!</span>';
 						header('Location: index.php');
 					}
 					
 				}else{
 					echo '</br><span style="color:red;">Nie ma usera</span>';
-					$_SESSION['error'] = '<span style="color:red;">W bazie nie ma użytkownika zarejestrownaego na ten adres email</span>';
+					$_SESSION['error'] = '<span style="color:red;">W bazie nie ma użytkownika zarejestrownaego na ten adres email!</span>';
 					header('Location: index.php');
 				}
 			}
