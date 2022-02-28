@@ -1,3 +1,10 @@
+<?php 
+	session_start();
+	if(!($_SESSION['logged_in'])) 
+	{
+		header('Location: index.php');
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +32,7 @@
       <header>
         <div class="brandTop d-flex flex-row">
             <div class="logo d-block">
-                <a href="#">
+                <a href="mainMenu.php">
                     <div class="logoIcon"><i class="icon-chart-bar"> </i></div>
                     <div class="logoText">
                         <div class="textPart d-xl-inline d-block">Personal</div>
@@ -78,7 +85,9 @@
                         <a class="nav-link" href="#">Wyloguj</a>
                         </li>
                         <li class="nav-item signOut">
+						<a href="logout.php">
                         <button type="button" class="btn btn-outline-warning"><i class="icon-off"></i> Wyloguj</button>
+						</a>
                         </li>
                     </ul>
                     </div>     

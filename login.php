@@ -62,7 +62,7 @@
 						unset($_SESSION['error']);
 						
 						$connection_result->close();
-						header('Location: mainMenu.html');
+						header('Location: mainMenu.php');
 					}
 					else{
 						echo '</br><span style="color:red;">Nie ma usera</span>';
