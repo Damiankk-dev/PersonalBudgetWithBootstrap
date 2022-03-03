@@ -55,7 +55,7 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link " href="#">
+                          <a class="nav-link " href="expense.php">
                             <div class="d-flex iconMenuItem">
                               <i class="icon-up-open"></i>Dodaj <span>Wydatek</span>
                             </div>

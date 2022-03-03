@@ -1,6 +1,13 @@
+$(document).ready(function() {
+});
+
 $(function() {
-    $( ".datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker(
+		{
+			dateFormat: "yy-mm-dd"
+		}
+	);
  });
  $(document).ready(function(){
-    $("#datepicker-13").datepicker().datepicker('setDate', new Date());
+    $("#datepicker-13").datepicker().datepicker('setDate', new Date());	
  });
