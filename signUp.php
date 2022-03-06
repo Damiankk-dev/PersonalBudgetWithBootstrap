@@ -182,7 +182,7 @@
 									<h1><i class="icon-gamepad prosIcon"></i>Rejestracja</h1>
 									<div class="input-group w-75 mx-auto">
 										<div class="input-group-prepend">
-											<div class="input-group-text"><i class="icon-at"></i></div>
+											<div class="input-group-text"><i class="icon-user"></i></div>
 										</div>
 										<input name="username" class="form-control " id="username"  placeholder="Podaj imię" value="<?php
 															if (isset($_SESSION['m_username']))

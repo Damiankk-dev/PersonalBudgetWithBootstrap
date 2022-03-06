@@ -158,7 +158,7 @@
                     <div class="row">
                         <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 fullColorBackground">
                             <div class="d-block prosHeader">
-                                <h1>Dodaj wydatek</h1>
+                                <h1><i class="icon-up-open"></i>Dodaj wydatek<i class="icon-up-open"></i></h1>
                             </div>
                         </div>
                     </div>
@@ -220,9 +220,9 @@
                             </div>
                             <div class="input-group mb-3 inputControl w-100">
                                 <div class="input-group-prepend w-25">
-                                  <div class="input-group-text w-100 justify-content-center"><i class="icon-th"></i></div>
+                                  <div class="input-group-text w-100 justify-content-center"><i class="icon-edit"></i></div>
                                 </div>
-								<textarea id="expense_comment" name="expense_comment" rows="4" cols="50">Opisz swój wydatek</textarea>
+								<textarea id="expense_comment" name="expense_comment" rows="2" cols="50" class="form-control">Opisz swój wydatek</textarea>
                             </div>
                             <div class="buttonArea d-flex">
                               <button type="submit" class="btn btn-outline-primary w-50 mx-auto"><i class="icon-up-open"></i>Dodaj</button>
