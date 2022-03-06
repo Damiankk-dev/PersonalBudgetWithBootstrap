@@ -3,7 +3,7 @@
 	session_start();
 	
 	// expense collumns:
-	//	id	user_id	expense_category_assigned_to_user	payment_method_assigned_to_user	expense_amount	date_of_expense	expense_comment
+	//	id	user_id	income_category_assigned_to_user	income_amount	date_of_expense	income_comment
 	
 	if(!(isset($_SESSION['logged_in']))) 
 	{
@@ -11,17 +11,15 @@
 	}
 	else 
 	{
-		if(isset($_POST['expense_amount']))
+		if(isset($_POST['income_amount']))
 		{
 			//zmienic id na user_id
 			$user_id = $_SESSION['id'];
-			$users_expense_category;
-			$users_payment_methods;
-			$expense_amount = $_POST['expense_amount'];
-			$expense_date = $_POST['expense_date'];
-			$payment_method = $_POST['payment_method'];
-			$expense_comment = $_POST['expense_comment'];
-			$expense_category = $_POST['expense_category'];	
+			$users_income_category;
+			$income_amount = $_POST['income_amount'];
+			$income_date = $_POST['income_date'];
+			$income_comment = $_POST['income_comment'];
+			$income_category = $_POST['income_category'];	
 			//TODO:
 			//przypisanie numeru kategorii oraz rodzaju metody platnosci w zaleznosci od selecta
 			
@@ -38,7 +36,7 @@
 				else 
 				{
 					//user id mam z sesji
-					$db_connection->query("INSERT INTO expenses VALUES(NULL, '$user_id', '$expense_category', '$payment_method', '$expense_amount', '$expense_date', '$expense_comment')");
+					$db_connection->query("INSERT INTO incomes VALUES(NULL, '$user_id', '$income_category', '$income_amount', '$income_date', '$income_comment')");
 				}
 			}	
 			catch(Exception $e)
@@ -104,15 +102,15 @@
                       </button>                      
                       <div class="collapse navbar-collapse navi" id="navbarTogglerDemo03">
                       <ul class="navbar-nav mt-2 mt-lg-0">
-                          <li class="nav-item">
-                            <a class="nav-link" href="income.php">
+                          <li class="nav-item active">
+                            <a class="nav-link" href="#">
                               <div class="d-flex iconMenuItem">
                                 <i class="icon-down-open"></i>Dodaj <span>Przychód</span>
                               </div>
                             </a>
                           </li>
-                          <li class="nav-item active">
-                            <a class="nav-link " href="#">
+                          <li class="nav-item">
+                            <a class="nav-link " href="expense.php">
                               <div class="d-flex iconMenuItem">
                                 <i class="icon-up-open"></i>Dodaj <span>Wydatek</span>
                               </div>
@@ -158,7 +156,7 @@
                     <div class="row">
                         <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 fullColorBackground">
                             <div class="d-block prosHeader">
-                                <h1><i class="icon-up-open"></i>Dodaj wydatek<i class="icon-up-open"></i></h1>
+                                <h1><i class="icon-down-open"></i>Dodaj przychód<i class="icon-down-open"></i></h1>
                             </div>
                         </div>
                     </div>
@@ -169,63 +167,34 @@
                                 <div class="input-group-prepend w-25">
                                     <div class="input-group-text w-100 justify-content-center"><i class="icon-money"></i></div>
                                 </div>
-                                <input name="expense_amount" type="number" class="form-control " min="0.0" step=".01" placeholder="Kwota">
+                                <input name="income_amount" type="number" class="form-control " min="0.0" step=".01" placeholder="Kwota">
                             </div>
                             <div class="input-group inputControl w-100">
                                 <div class="input-group-prepend w-25">
                                   <label class="input-group-text w-100 justify-content-center"><span class="datePrependLabel">Data</span> <i class="icon-calendar"></i></label>
                                 </div>
-                                <input name="expense_date" type = "text" id = "datepicker-13" class="form-control datepicker">
+                                <input name="income_date" type = "text" id = "datepicker-13" class="form-control datepicker">
                             </div>  
-                            <div class="input-group mb-3 inputControl w-100">
-                                <div class="input-group-prepend w-25">
-                                  <div class="input-group-text justify-content-center w-100">
-                                    <i class="icon-money"></i>
-                                    <i class="icon-credit-card"></i>
-                                    <i class="icon-euro"></i>
-                                  </div>
-                                </div>
-                                <select name="payment_method" class="custom-select" id="inputGroupSelect01">
-                                  <option selected>Forma płatności</option>
-                                  <option value="1">Gotówka</option>
-                                  <option value="2">Karta kredytowa</option>
-                                  <option value="3">Karta debetowa</option>
-                                  <option value="4">Przelew</option>
-                                </select>
-                            </div>
                             <div class="input-group mb-3 inputControl w-100">
                                 <div class="input-group-prepend w-25">
                                   <div class="input-group-text w-100 justify-content-center"><i class="icon-th"></i></div>
                                 </div>
-                                <select name="expense_category" class="custom-select" id="inputGroupSelect02">
+                                <select name="income_category" class="custom-select" id="inputGroupSelect02">
                                   <option selected>Kategoria</option>
-                                  <option value="1">Jedzenie</option>
-                                  <option value="2">Mieszkanie</option>
-                                  <option value="3">Transport</option>
-                                  <option value="4">Telekomunikacja</option>
-                                  <option value="5">Opieka zdrowotna</option>
-                                  <option value="6">Ubrania</option>
-                                  <option value="7">Higiena</option>
-                                  <option value="8">Dzieci</option>
-                                  <option value="9">Rozrywka</option>
-                                  <option value="10">Wycieczka</option>
-                                  <option value="11">Szkolenia</option>
-                                  <option value="12">Ksiązki</option>
-                                  <option value="13">Oszczędności</option>
-                                  <option value="14">Emerytura</option>
-                                  <option value="15">Długi</option>
-                                  <option value="16">Darowizna</option>
-                                  <option value="17">Inne</option>
+                                  <option value="1">Wynagrodzenie</option>
+                                  <option value="2">Odsetki bankowe</option>
+                                  <option value="3">Sprzedaż</option>
+                                  <option value="4">Inne</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3 inputControl w-100">
                                 <div class="input-group-prepend w-25">
                                   <div class="input-group-text w-100 justify-content-center"><i class="icon-edit"></i></div>
                                 </div>
-								<textarea id="expense_comment" name="expense_comment" rows="2" cols="50" class="form-control">Opisz swój wydatek</textarea>
+								<textarea id="income_comment" name="income_comment" rows="2" cols="50" class="form-control">Opisz swój przychód</textarea>
                             </div>
                             <div class="buttonArea d-flex">
-                              <button type="submit" class="btn btn-outline-primary w-50 mx-auto"><i class="icon-up-open"></i>Dodaj</button>
+                              <button type="submit" class="btn btn-outline-primary w-50 mx-auto"><i class="icon-down-open"></i>Dodaj</button>
                             </div>    
                           </form>
                         </div>

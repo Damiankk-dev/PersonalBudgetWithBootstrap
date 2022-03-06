@@ -48,7 +48,7 @@
                     <div class="collapse navbar-collapse navi" id="navbarTogglerDemo03">
                     <ul class="navbar-nav mt-2 mt-lg-0">
                         <li class="nav-item">
-                          <a class="nav-link" href="#">
+                          <a class="nav-link" href="income.php">
                             <div class="d-flex iconMenuItem">
                               <i class="icon-down-open"></i>Dodaj <span>Przychód</span>
                             </div>
