@@ -67,9 +67,9 @@
                               <span class="icon-list-alt"></span><span class="blankLine">Przeglądaj</span><span class="blankLine">Bilans</span> 
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Bieżący miesiąc</a>
-                                <a class="dropdown-item" href="#">Poprzedni miesiąc</a>
-                                <a class="dropdown-item" href="#">Bieżący rok</a>
+                                <a class="dropdown-item" href="balance.php?balance_type=Actual_month">Bieżący miesiąc</a>
+                                <a class="dropdown-item" "balance.php?balance_type=Previous_month">Poprzedni miesiąc</a>
+                                <a class="dropdown-item" href="balance.php?balance_type=Actual_year">Bieżący rok</a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#anyPeriodModal">Dowolny okres</a>
                             </div>
                           </div>
@@ -135,7 +135,9 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+						<a href="balance.php?balance_type=Custom">
                         <button type="button" class="btn btn-primary">Wyświetl bilans</button>
+						</a>
                       </div>
                     </div>
                   </div>

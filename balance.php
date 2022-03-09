@@ -1,7 +1,6 @@
 <?php
-	
 	session_start();
-	
+	echo 'Hello ' . htmlspecialchars($_GET["balance_type"]) . '!';
 	// expense collumns:
 	//	id	user_id	expense_category_assigned_to_user	payment_method_assigned_to_user	expense_amount	date_of_expense	expense_comment
 	
@@ -111,8 +110,8 @@
                               </div>
                             </a>
                           </li>
-                          <li class="nav-item active">
-                            <a class="nav-link " href="#">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">
                               <div class="d-flex iconMenuItem">
                                 <i class="icon-up-open"></i>Dodaj <span>Wydatek</span>
                               </div>
@@ -120,12 +119,12 @@
                           </li>
                           <li class="nav-item dropdown">
                             <div class="d-flex iconMenuItem">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                  
+                              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                  
                                 <span class="icon-list-alt"></span><span class="blankLine">Przeglądaj</span><span class="blankLine">Bilans</span> 
                               </a>
                               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item" href="balance.php?balance_type=Actual_month">Bieżący miesiąc</a>
-                                  <a class="dropdown-item" "balance.php?balance_type=Previous_month">Poprzedni miesiąc</a>
+                                  <a class="dropdown-item" href="balance.php?balance_type=Previous_month">Poprzedni miesiąc</a>
                                   <a class="dropdown-item" href="balance.php?balance_type=Actual_year">Bieżący rok</a>
                                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#anyPeriodModal">Dowolny okres</a>
                               </div>
@@ -156,78 +155,39 @@
             <main>
                 <div class="centralArea">
                     <div class="row">
-                        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 fullColorBackground">
+                        <div class="col-12 fullColorBackground">
                             <div class="d-block prosHeader">
-                                <h1><i class="icon-up-open"></i>Dodaj wydatek<i class="icon-up-open"></i></h1>
+                                <h1><i class="icon-chart-bar"></i>Twój bilans<i class="icon-chart-bar"></i></h1>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 fullColorBackground my-4 px-4 pb-3">
-                          <form method="post">
-                            <div class="input-group inputControl w-100">
-                                <div class="input-group-prepend w-25">
-                                    <div class="input-group-text w-100 justify-content-center"><i class="icon-money"></i></div>
+                        <div class="col-12 fullColorBackground my-4 px-4 pb-3 d-flex justify-content-center">                          
+                          <div class="main_wrapper_balance d-flex flex-column w-100">
+                            <div class="container_cashflow_wrapper px-2 justify-content-around">
+                              <div class="container_cashflow_col d-flex flex-column align-items-center">
+                                <div class="balance_header_tile">
+                                    <h3>Przychody</h3>
                                 </div>
-                                <input name="expense_amount" type="number" class="form-control " min="0.0" step=".01" placeholder="Kwota">
+                                <div id="registerArea" class=" my-1">
+                                </div>                                
+                              </div>
+                              <div class="container_cashflow_col d-flex flex-column align-items-center">
+                                <div class="balance_header_tile">
+                                    <h3>Wydatki</h3>
+                                </div>
+                                <div id="registerArea" class=" my-1">
+                                </div>
+                              </div>
                             </div>
-                            <div class="input-group inputControl w-100">
-                                <div class="input-group-prepend w-25">
-                                  <label class="input-group-text w-100 justify-content-center"><span class="datePrependLabel">Data</span> <i class="icon-calendar"></i></label>
-                                </div>
-                                <input name="expense_date" type = "text" id = "datepicker-13" class="form-control datepicker">
-                            </div>  
-                            <div class="input-group mb-3 inputControl w-100">
-                                <div class="input-group-prepend w-25">
-                                  <div class="input-group-text justify-content-center w-100">
-                                    <i class="icon-money"></i>
-                                    <i class="icon-credit-card"></i>
-                                    <i class="icon-euro"></i>
-                                  </div>
-                                </div>
-                                <select name="payment_method" class="custom-select" id="inputGroupSelect01">
-                                  <option selected>Forma płatności</option>
-                                  <option value="1">Gotówka</option>
-                                  <option value="2">Karta kredytowa</option>
-                                  <option value="3">Karta debetowa</option>
-                                  <option value="4">Przelew</option>
-                                </select>
+                            <div class="container_balance_row d-flex flex-column px-2 align-items-center">
+                              <div class="balance_header_tile">
+                                  <h3>Bilans</h3>
+                              </div> 
+                              <div id="registerArea" class=" my-1">
+                              </div>                           
                             </div>
-                            <div class="input-group mb-3 inputControl w-100">
-                                <div class="input-group-prepend w-25">
-                                  <div class="input-group-text w-100 justify-content-center"><i class="icon-th"></i></div>
-                                </div>
-                                <select name="expense_category" class="custom-select" id="inputGroupSelect02">
-                                  <option selected>Kategoria</option>
-                                  <option value="1">Jedzenie</option>
-                                  <option value="2">Mieszkanie</option>
-                                  <option value="3">Transport</option>
-                                  <option value="4">Telekomunikacja</option>
-                                  <option value="5">Opieka zdrowotna</option>
-                                  <option value="6">Ubrania</option>
-                                  <option value="7">Higiena</option>
-                                  <option value="8">Dzieci</option>
-                                  <option value="9">Rozrywka</option>
-                                  <option value="10">Wycieczka</option>
-                                  <option value="11">Szkolenia</option>
-                                  <option value="12">Ksiązki</option>
-                                  <option value="13">Oszczędności</option>
-                                  <option value="14">Emerytura</option>
-                                  <option value="15">Długi</option>
-                                  <option value="16">Darowizna</option>
-                                  <option value="17">Inne</option>
-                                </select>
-                            </div>
-                            <div class="input-group mb-3 inputControl w-100">
-                                <div class="input-group-prepend w-25">
-                                  <div class="input-group-text w-100 justify-content-center"><i class="icon-edit"></i></div>
-                                </div>
-								<textarea id="expense_comment" name="expense_comment" rows="2" cols="50" class="form-control">Opisz swój wydatek</textarea>
-                            </div>
-                            <div class="buttonArea d-flex">
-                              <button type="submit" class="btn btn-outline-primary w-50 mx-auto"><i class="icon-up-open"></i>Dodaj</button>
-                            </div>    
-                          </form>
+                          </div>
                         </div>
                     </div>
                 </div>

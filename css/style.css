@@ -150,6 +150,21 @@
 .modal-body .d-flex{
     align-items: center;
 }
+.balanceTile{
+    display: flex;
+}
+.container_cashflow_col{
+    width: 50%;
+}
+.container_cashflow_wrapper{
+    display: flex;
+}
+.balance_header_tile{
+    background-color: lightgray;
+    width: 75%;
+    text-align: center;
+    border-radius: 10px;
+}
 
 /* //Extra small devices (portrait phones, less than 576px) */
 /* @media (max-width: 575.98px) { ... } */
@@ -203,6 +218,12 @@
     h1{
         font: normal 500 20px/22px 'Josefin Sans';
         margin-top: 0.5rem;
+    }    
+    .container_cashflow_col{
+        width: 100%;
+    }    
+    .container_cashflow_wrapper{
+        flex-direction: column;
     }
 }
 
