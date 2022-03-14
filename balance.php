@@ -4,13 +4,61 @@
 	function cashflow_query($start_date, $end_date, $cashflow_type, $db_connection)
 	{	
 		$user_id = $_SESSION['id'];
+		$cashflow_date_column = "date_of_".substr($cashflow_type, 0, -1);
 		return sprintf("SELECT * FROM %s WHERE user_id='%s'
-		AND date_of_expense BETWEEN '%s' AND '%s' ORDER BY date_of_expense",
+		AND %s BETWEEN '%s' AND '%s' ORDER BY %s",
 		mysqli_real_escape_string($db_connection, $cashflow_type),
 		mysqli_real_escape_string($db_connection, $user_id),
+		mysqli_real_escape_string($db_connection, $cashflow_date_column),
 		mysqli_real_escape_string($db_connection, $start_date),
-		mysqli_real_escape_string($db_connection, $end_date));
-		
+		mysqli_real_escape_string($db_connection, $end_date),
+		mysqli_real_escape_string($db_connection, $cashflow_date_column));		
+	}
+	function cashflow_sum($start_date, $end_date, $cashflow_type, $db_connection)
+	{	
+		$cashflow_date_column = "date_of_".substr($cashflow_type, 0, -1);
+		$user_id = $_SESSION['id'];
+		return sprintf("SELECT SUM(amount) AS sum FROM %s WHERE user_id='%s'
+		AND %s BETWEEN '%s' AND '%s'",
+		mysqli_real_escape_string($db_connection, $cashflow_type),
+		mysqli_real_escape_string($db_connection, $user_id),
+		mysqli_real_escape_string($db_connection, $cashflow_date_column),
+		mysqli_real_escape_string($db_connection, $start_date),
+		mysqli_real_escape_string($db_connection, $end_date));		
+	}
+	function get_casflow_table($db_connection, $cashflow_query)
+	{
+		if($connection_result = @$db_connection->query($cashflow_query))
+		{
+			$no_of_records = $connection_result->num_rows;
+			if ($no_of_records > 0)
+			{
+				$cashflow_data_rows = $connection_result->fetch_all(MYSQLI_ASSOC);
+				return $cashflow_data_rows;
+			}
+		}
+		else return null;	
+	}
+	function get_cashflow_sum($db_connection, $sum_cashflow_query)
+	{		
+		if($connection_result_sum = @$db_connection->query($sum_cashflow_query))
+		{	
+			$cashflow_sum_row = mysqli_fetch_row($connection_result_sum);
+			$sum_expense = $cashflow_sum_row[0];
+			return $sum_expense;
+		}
+		else return 0;
+	}
+	function get_balance($db_connection, $start_date, $end_date)
+	{		
+		$expense_query = cashflow_query($start_date, $end_date, 'expenses', $db_connection);
+		$sum_expense_query = cashflow_sum($start_date, $end_date, 'expenses', $db_connection);
+		$income_query = cashflow_query($start_date, $end_date, 'incomes', $db_connection);
+		$sum_income_query = cashflow_sum($start_date, $end_date, 'incomes', $db_connection);
+		$_SESSION['expenses_table'] = get_casflow_table($db_connection, $expense_query);
+		$_SESSION['expenses_sum'] = get_cashflow_sum($db_connection, $sum_expense_query);
+		$_SESSION['incomes_table'] = get_casflow_table($db_connection, $income_query);
+		$_SESSION['incomes_sum'] = get_cashflow_sum($db_connection, $sum_income_query);
 	}
 	// expense collumns:
 	//	id	user_id	expense_category_assigned_to_user	payment_method_assigned_to_user	expense_amount	date_of_expense	expense_comment
@@ -31,33 +79,8 @@
 			$start_date;
 			$end_date;
 			$expense_query;
+			$expense_sum;
 			$db_connection = new mysqli($host, $db_user, $db_password, $database);
-			switch($balance_type)
-			{
-				case "Actual_month":
-					$end_date = date('Y-m-d');
-					$start_date = date('Y-m-01');
-					$expense_query = cashflow_query($start_date, $end_date, 'expenses', $db_connection);
-					break;				
-				case "Previous_month":
-					$end_date = date('Y-m-d', mktime(0, 0, 0, date('m')-1 ,date('t') ,date('Y')));
-					$end_date = date('Y-m-d', strtotime('last day of previous month'));
-					$start_date = date('Y-m-d', mktime(0, 0, 0, date('m')-1 ,1 ,date('Y')));
-					$expense_query = cashflow_query($start_date, $end_date, 'expenses', $db_connection);
-					break;
-				case "Actual_year":
-					$end_date = date('Y-m-d');
-					$start_date = date('Y-m-d', mktime(0, 0, 0, 1, 1, date('Y')));
-					$expense_query = cashflow_query($start_date, $end_date, 'expenses', $db_connection);
-					break;
-				case "Custom":
-					$end_date = $_POST['endBalancePeriod'];
-					$start_date = $_POST['startBalancePeriod'];
-					$expense_query = cashflow_query($start_date, $end_date, 'expenses', $db_connection);
-					break;	
-				default:
-					echo "Invalid query";
-			}
 			
 			if ($db_connection->connect_errno!=0)
 			{
@@ -65,14 +88,30 @@
 			}
 			else 
 			{
-				if($connection_result = @$db_connection->query($expense_query))
+				switch($balance_type)
 				{
-					$no_of_records = $connection_result->num_rows;
-					if ($no_of_records > 0)
-					{
-						$expense_data_rows = $connection_result->fetch_all(MYSQLI_ASSOC);
-						$_SESSION['expense_data_rows'] = $expense_data_rows;
-					}
+					case "Actual_month":
+						$end_date = date('Y-m-d');
+						$start_date = date('Y-m-01');
+						get_balance($db_connection, $start_date, $end_date);						
+						break;				
+					case "Previous_month":
+						$end_date = date('Y-m-d', strtotime('last day of previous month'));
+						$start_date = date('Y-m-d', mktime(0, 0, 0, date('m')-1 ,1 ,date('Y')));
+						get_balance($db_connection, $start_date, $end_date);	
+						break;
+					case "Actual_year":
+						$end_date = date('Y-m-d');
+						$start_date = date('Y-m-d', mktime(0, 0, 0, 1, 1, date('Y')));
+						get_balance($db_connection, $start_date, $end_date);	
+						break;
+					case "Custom":
+						$end_date = $_POST['endBalancePeriod'];
+						$start_date = $_POST['startBalancePeriod'];
+						get_balance($db_connection, $start_date, $end_date);	
+						break;	
+					default:
+						echo "Invalid query";
 				}
 			}
 		}	
@@ -146,7 +185,7 @@
                             </a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="expense.php">
                               <div class="d-flex iconMenuItem">
                                 <i class="icon-up-open"></i>Dodaj <span>Wydatek</span>
                               </div>
@@ -204,28 +243,45 @@
                                 <div class="balance_header_tile">
                                     <h3>Przychody</h3>
                                 </div>
-                                <div id="registerArea" class=" my-1">
-									<table>
-										<th>Data</th>
-										<th>Wartość</th>
-										<th>Opis</th>
-									</table>
-                                </div>                                
-                              </div>
-                              <div class="container_cashflow_col d-flex flex-column align-items-center">
-                                <div class="balance_header_tile">
-                                    <h3>Wydatki</h3>
-                                </div>
-                                <div id="registerArea" class=" my-1">
-									<table>
+                                <div class="cashflow_table_wrap my-1">
+									<table  class="income_table cashflow_table">
 										<th>Wartość</th>
 										<th>Data</th>
 										<th>Opis</th>
 										<?php
 										
-										if (isset($_SESSION['expense_data_rows']))
+										if (isset($_SESSION['incomes_table']))
 										{
-											$expense_data_rows = $_SESSION['expense_data_rows'];
+											$expense_data_rows = $_SESSION['incomes_table'];
+											foreach ($expense_data_rows as $row)
+											{
+												echo "<tr><td>".$row['amount']."</td>"."<td>".$row['date_of_income']."</td>"."<td>".$row['income_comment']."</td></tr>";
+											}
+										}
+										
+										?>
+									</table>
+                                </div>								
+                                <div class="balance_footer_tile">
+                                    <h5>SUMA: 
+									<?= $_SESSION['incomes_sum']; ?>
+									</h5>
+                                </div>                               
+                              </div>
+                              <div class="container_cashflow_col d-flex flex-column align-items-center">
+                                <div class="balance_header_tile">
+                                    <h3>Wydatki</h3>
+                                </div>
+                                <div class="cashflow_table_wrap my-1">
+									<table  class="expense_table cashflow_table">
+										<th>Wartość</th>
+										<th>Data</th>
+										<th>Opis</th>
+										<?php
+										
+										if (isset($_SESSION['expenses_table']))
+										{
+											$expense_data_rows = $_SESSION['expenses_table'];
 											foreach ($expense_data_rows as $row)
 											{
 												echo "<tr><td>".$row['amount']."</td>"."<td>".$row['date_of_expense']."</td>"."<td>".$row['expense_comment']."</td></tr>";
@@ -234,6 +290,11 @@
 										
 										?>
 									</table>
+                                </div>								
+                                <div class="balance_footer_tile">
+                                    <h5>SUMA: 
+									<?= $_SESSION['expenses_sum']; ?>
+									</h5>
                                 </div>
                               </div>
                             </div>
