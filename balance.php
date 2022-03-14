@@ -1,6 +1,17 @@
 <?php
+
 	session_start();
-	echo 'Hello ' . htmlspecialchars($_GET["balance_type"]) . '!';
+	function cashflow_query($start_date, $end_date, $cashflow_type, $db_connection)
+	{	
+		$user_id = $_SESSION['id'];
+		return sprintf("SELECT * FROM %s WHERE user_id='%s'
+		AND date_of_expense BETWEEN '%s' AND '%s' ORDER BY date_of_expense",
+		mysqli_real_escape_string($db_connection, $cashflow_type),
+		mysqli_real_escape_string($db_connection, $user_id),
+		mysqli_real_escape_string($db_connection, $start_date),
+		mysqli_real_escape_string($db_connection, $end_date));
+		
+	}
 	// expense collumns:
 	//	id	user_id	expense_category_assigned_to_user	payment_method_assigned_to_user	expense_amount	date_of_expense	expense_comment
 	
@@ -10,42 +21,66 @@
 	}
 	else 
 	{
-		if(isset($_POST['expense_amount']))
+		require_once "dbconnect.php";
+		mysqli_report(MYSQLI_REPORT_STRICT);
+		
+		try
 		{
-			//zmienic id na user_id
+			$balance_type = htmlspecialchars($_GET["balance_type"]);
 			$user_id = $_SESSION['id'];
-			$users_expense_category;
-			$users_payment_methods;
-			$expense_amount = $_POST['expense_amount'];
-			$expense_date = $_POST['expense_date'];
-			$payment_method = $_POST['payment_method'];
-			$expense_comment = $_POST['expense_comment'];
-			$expense_category = $_POST['expense_category'];	
-			//TODO:
-			//przypisanie numeru kategorii oraz rodzaju metody platnosci w zaleznosci od selecta
-			
-			require_once "dbconnect.php";
-			mysqli_report(MYSQLI_REPORT_STRICT);
-			
-			try
+			$start_date;
+			$end_date;
+			$expense_query;
+			$db_connection = new mysqli($host, $db_user, $db_password, $database);
+			switch($balance_type)
 			{
-				$db_connection = new mysqli($host, $db_user, $db_password, $database);
-				if ($db_connection->connect_errno!=0)
-				{
-					throw new Exception(mysqli_connect_errno());
-				}
-				else 
-				{
-					//user id mam z sesji
-					$db_connection->query("INSERT INTO expenses VALUES(NULL, '$user_id', '$expense_category', '$payment_method', '$expense_amount', '$expense_date', '$expense_comment')");
-				}
-			}	
-			catch(Exception $e)
+				case "Actual_month":
+					$end_date = date('Y-m-d');
+					$start_date = date('Y-m-01');
+					$expense_query = cashflow_query($start_date, $end_date, 'expenses', $db_connection);
+					break;				
+				case "Previous_month":
+					$end_date = date('Y-m-d', mktime(0, 0, 0, date('m')-1 ,date('t') ,date('Y')));
+					$end_date = date('Y-m-d', strtotime('last day of previous month'));
+					$start_date = date('Y-m-d', mktime(0, 0, 0, date('m')-1 ,1 ,date('Y')));
+					$expense_query = cashflow_query($start_date, $end_date, 'expenses', $db_connection);
+					break;
+				case "Actual_year":
+					$end_date = date('Y-m-d');
+					$start_date = date('Y-m-d', mktime(0, 0, 0, 1, 1, date('Y')));
+					$expense_query = cashflow_query($start_date, $end_date, 'expenses', $db_connection);
+					break;
+				case "Custom":
+					$end_date = $_POST['endBalancePeriod'];
+					$start_date = $_POST['startBalancePeriod'];
+					$expense_query = cashflow_query($start_date, $end_date, 'expenses', $db_connection);
+					break;	
+				default:
+					echo "Invalid query";
+			}
+			
+			if ($db_connection->connect_errno!=0)
 			{
-				echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie</span>';
-				echo '<br />Informacja o błędzie: '.$e;
-			}			
-		}
+				throw new Exception(mysqli_connect_errno());
+			}
+			else 
+			{
+				if($connection_result = @$db_connection->query($expense_query))
+				{
+					$no_of_records = $connection_result->num_rows;
+					if ($no_of_records > 0)
+					{
+						$expense_data_rows = $connection_result->fetch_all(MYSQLI_ASSOC);
+						$_SESSION['expense_data_rows'] = $expense_data_rows;
+					}
+				}
+			}
+		}	
+		catch(Exception $e)
+		{
+			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie</span>';
+			echo '<br />Informacja o błędzie: '.$e;
+		}		
 	}
 	
 	
@@ -170,6 +205,11 @@
                                     <h3>Przychody</h3>
                                 </div>
                                 <div id="registerArea" class=" my-1">
+									<table>
+										<th>Data</th>
+										<th>Wartość</th>
+										<th>Opis</th>
+									</table>
                                 </div>                                
                               </div>
                               <div class="container_cashflow_col d-flex flex-column align-items-center">
@@ -177,6 +217,23 @@
                                     <h3>Wydatki</h3>
                                 </div>
                                 <div id="registerArea" class=" my-1">
+									<table>
+										<th>Wartość</th>
+										<th>Data</th>
+										<th>Opis</th>
+										<?php
+										
+										if (isset($_SESSION['expense_data_rows']))
+										{
+											$expense_data_rows = $_SESSION['expense_data_rows'];
+											foreach ($expense_data_rows as $row)
+											{
+												echo "<tr><td>".$row['amount']."</td>"."<td>".$row['date_of_expense']."</td>"."<td>".$row['expense_comment']."</td></tr>";
+											}
+										}
+										
+										?>
+									</table>
                                 </div>
                               </div>
                             </div>
@@ -200,28 +257,28 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body" >
-                        <div class="input-group d-flex">
-                            <label class=" justify-content-center">
-                             <span class="datePrependLabel"></span><i class="icon-calendar"></i> Od:</label>
-                          <div class="modal-body">
-                            <input type="text" id="startBalancePeriod" class="form-control datepicker" data-toggle="datepicker">
-                          </div> 
-                        </div>
-                        <div class="input-group d-flex">
-                            <label class=" justify-content-center">
-                             <span class="datePrependLabel"></span><i class="icon-calendar"></i> Do:</label>
-                          <div class="modal-body">
-                            <input type="text" id="endtBalancePeriod" class="form-control datepicker" data-toggle="datepicker">
-                          </div> 
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-						<a href="balance.php?balance_type=Custom">
-                        <button type="button" class="btn btn-primary">Wyświetl bilans</button>
-						</a>
-                      </div>
+					  <form action="balance.php?balance_type=Custom" method="post">
+						  <div class="modal-body" >
+							<div class="input-group d-flex">
+								<label class=" justify-content-center">
+								 <span class="datePrependLabel"></span><i class="icon-calendar"></i> Od:</label>
+							  <div class="modal-body">
+								<input type="text" name="startBalancePeriod" class="form-control datepicker" data-toggle="datepicker">
+							  </div> 
+							</div>
+							<div class="input-group d-flex">
+								<label class=" justify-content-center">
+								 <span class="datePrependLabel"></span><i class="icon-calendar"></i> Do:</label>
+							  <div class="modal-body">
+								<input type="text" name="endBalancePeriod" class="form-control datepicker" data-toggle="datepicker">
+							  </div> 
+							</div>
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+							<button type="submit" class="btn btn-primary">Wyświetl bilans</button>
+						  </div>					  
+					  </form>
                     </div>
                   </div>
                 </div>

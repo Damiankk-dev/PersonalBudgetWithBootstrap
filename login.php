@@ -32,8 +32,6 @@
 		}
 		else
 		{	
-			
-			echo '<span style="color:lightgreen;">Polaczono z baza</span>';
 			$email = $_POST['email'];
 			$password = $_POST['password'];
 			
@@ -43,18 +41,10 @@
 			sprintf("SELECT * FROM users WHERE email='%s'",
 			mysqli_real_escape_string($connection, $email)
 			))){
-				
-				echo '</br><span style="color:lightgreen;">Zapytanie z baza</span>';
-				echo '<span style="color:lightgreen;">Przed num rows</span>';
 				$users_count = $connection_result->num_rows;
-				echo '<span style="color:lightgreen;">Po num rows</span>';
 				if($users_count > 0){
-					echo '<span style="color:lightgreen;">Przed fetch</span>';
 					$data_row = $connection_result->fetch_assoc();
-					
-					echo '<span style="color:lightgreen;">Pobranie z bazy</span>';
 					if ( password_verify($password, $data_row['password'])){
-						echo '</br><span style="color:lightgreen;">Jest User</span>';
 						$_SESSION['logged_in'] = true;
 						$_SESSION['id'] = $data_row['id'];
 						$_SESSION['username'] = $data_row['username'];
@@ -65,13 +55,11 @@
 						header('Location: mainMenu.php');
 					}
 					else{
-						echo '</br><span style="color:red;">Nie ma usera</span>';
 						$_SESSION['error'] = '<span style="color:red;">Nieprawidłowy email lub hasło!</span>';
 						header('Location: index.php');
 					}
 					
 				}else{
-					echo '</br><span style="color:red;">Nie ma usera</span>';
 					$_SESSION['error'] = '<span style="color:red;">W bazie nie ma użytkownika zarejestrownaego na ten adres email!</span>';
 					header('Location: index.php');
 				}
