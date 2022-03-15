@@ -55,6 +55,7 @@
 		$sum_expense_query = cashflow_sum($start_date, $end_date, 'expenses', $db_connection);
 		$income_query = cashflow_query($start_date, $end_date, 'incomes', $db_connection);
 		$sum_income_query = cashflow_sum($start_date, $end_date, 'incomes', $db_connection);
+		echo "</br>".$expense_query;
 		$_SESSION['expenses_table'] = get_casflow_table($db_connection, $expense_query);
 		$_SESSION['expenses_sum'] = get_cashflow_sum($db_connection, $sum_expense_query);
 		$_SESSION['incomes_table'] = get_casflow_table($db_connection, $income_query);
@@ -76,8 +77,9 @@
 		{
 			$balance_type = htmlspecialchars($_GET["balance_type"]);
 			$user_id = $_SESSION['id'];
-			$start_date;
-			$end_date;
+			$date_zero = date('Y-m-d', mktime(0, 0, 0, 0, 0, 0));
+			$start_date = $date_zero;
+			$end_date = $date_zero;
 			$expense_query;
 			$expense_sum;
 			$db_connection = new mysqli($host, $db_user, $db_password, $database);
@@ -92,26 +94,39 @@
 				{
 					case "Actual_month":
 						$end_date = date('Y-m-d');
-						$start_date = date('Y-m-01');
-						get_balance($db_connection, $start_date, $end_date);						
+						$start_date = date('Y-m-01');						
 						break;				
 					case "Previous_month":
 						$end_date = date('Y-m-d', strtotime('last day of previous month'));
-						$start_date = date('Y-m-d', mktime(0, 0, 0, date('m')-1 ,1 ,date('Y')));
-						get_balance($db_connection, $start_date, $end_date);	
+						$start_date = date('Y-m-d', strtotime('first day of previous month'));
 						break;
 					case "Actual_year":
 						$end_date = date('Y-m-d');
 						$start_date = date('Y-m-d', mktime(0, 0, 0, 1, 1, date('Y')));
-						get_balance($db_connection, $start_date, $end_date);	
 						break;
 					case "Custom":
-						$end_date = $_POST['endBalancePeriod'];
-						$start_date = $_POST['startBalancePeriod'];
-						get_balance($db_connection, $start_date, $end_date);	
+						if (isset($_POST['endBalancePeriod']) && 
+							isset($_POST['startBalancePeriod'])){
+							$end_date = $_POST['endBalancePeriod'];
+							$start_date = $_POST['startBalancePeriod'];
+							if ($start_date > $end_date){
+								$start_date = $date_zero;
+								$end_date = $date_zero;
+								echo "</br>Invalid date!";
+							}	
+						}						
 						break;	
 					default:
 						echo "Invalid query";
+				}
+				if ($start_date != $date_zero && $end_date != $date_zero){
+					get_balance($db_connection, $start_date, $end_date);					
+				}
+				else{
+					unset($_SESSION['expenses_table']);
+					unset($_SESSION['expenses_sum']);
+					unset($_SESSION['incomes_table']);
+					unset($_SESSION['incomes_sum']);
 				}
 			}
 		}	
@@ -264,7 +279,7 @@
                                 </div>								
                                 <div class="balance_footer_tile">
                                     <h5>SUMA: 
-									<?= $_SESSION['incomes_sum']; ?>
+									<?php if (isset($_SESSION['incomes_sum'])) echo $_SESSION['incomes_sum']; ?>
 									</h5>
                                 </div>                               
                               </div>
@@ -293,7 +308,7 @@
                                 </div>								
                                 <div class="balance_footer_tile">
                                     <h5>SUMA: 
-									<?= $_SESSION['expenses_sum']; ?>
+									<?php if (isset($_SESSION['expenses_sum'])) echo $_SESSION['expenses_sum']; ?>
 									</h5>
                                 </div>
                               </div>
