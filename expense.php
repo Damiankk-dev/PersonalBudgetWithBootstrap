@@ -197,7 +197,7 @@
                                 <div class="input-group-prepend w-25">
                                   <div class="input-group-text w-100 justify-content-center"><i class="icon-th"></i></div>
                                 </div>
-                                <select name="expense_category" class="custom-select" id="inputGroupSelect02">
+                                <select name="expense_category" class="custom-select" id="inputGroupSelect02" onfocus='this.size=8;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                                   <option selected>Kategoria</option>
                                   <option value="1">Jedzenie</option>
                                   <option value="2">Mieszkanie</option>

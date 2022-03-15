@@ -55,11 +55,11 @@
 		$sum_expense_query = cashflow_sum($start_date, $end_date, 'expenses', $db_connection);
 		$income_query = cashflow_query($start_date, $end_date, 'incomes', $db_connection);
 		$sum_income_query = cashflow_sum($start_date, $end_date, 'incomes', $db_connection);
-		echo "</br>".$expense_query;
 		$_SESSION['expenses_table'] = get_casflow_table($db_connection, $expense_query);
 		$_SESSION['expenses_sum'] = get_cashflow_sum($db_connection, $sum_expense_query);
 		$_SESSION['incomes_table'] = get_casflow_table($db_connection, $income_query);
 		$_SESSION['incomes_sum'] = get_cashflow_sum($db_connection, $sum_income_query);
+		$_SESSION['balance'] = $_SESSION['incomes_sum'] - $_SESSION['expenses_sum'];
 	}
 	// expense collumns:
 	//	id	user_id	expense_category_assigned_to_user	payment_method_assigned_to_user	expense_amount	date_of_expense	expense_comment
@@ -120,13 +120,22 @@
 						echo "Invalid query";
 				}
 				if ($start_date != $date_zero && $end_date != $date_zero){
-					get_balance($db_connection, $start_date, $end_date);					
+					get_balance($db_connection, $start_date, $end_date);
+					if ($_SESSION['balance'] > 0)
+					{
+						$_SESSION['balance_status'] = "Gratulacje! W tym okresie udało Ci się zaoszczędzić pieniądze!";
+					}
+					else
+					{
+						$_SESSION['balance_status'] = "Uwaga! W tym okresie Twoje wydatki przerosły przychody!";						
+					}
 				}
 				else{
 					unset($_SESSION['expenses_table']);
 					unset($_SESSION['expenses_sum']);
 					unset($_SESSION['incomes_table']);
 					unset($_SESSION['incomes_sum']);
+					unset($_SESSION['balance']);
 				}
 			}
 		}	
@@ -317,7 +326,11 @@
                               <div class="balance_header_tile">
                                   <h3>Bilans</h3>
                               </div> 
-                              <div id="registerArea" class=" my-1">
+                              <div class=" my-1">
+							  <h5><?=$_SESSION['balance']?></h5>
+                              </div>  
+                              <div class=" my-1">
+							  <h6><?=$_SESSION['balance_status']?></h6>
                               </div>                           
                             </div>
                           </div>

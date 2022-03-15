@@ -181,7 +181,11 @@
 }
 .cashflow_table_wrap{	
 	overflow-y: auto;
-	height: 35vh;
+	height: 30vh;
+}
+.main_wrapper_balance{
+	overflow-y: auto;
+	height: 60vh;	
 }
 
 /* //Extra small devices (portrait phones, less than 576px) */
